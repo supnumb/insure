@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% include admin_menu.html%> 
+        <form method="post" enctype='multipart/form-data' >
+            <table class="tbForm" cellspacing="0">
+               <tr>
+                    <td class="lab">
+                        保险:
+                    </td>
+                    <td>
+                        <input type="text" value="<%=good.title%>" name="title" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        简述:
+                    </td>
+                    <td>
+                        <textarea name="desc" cols="100" rows="3"><%=good.desc%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        产品内容:
+                    </td>
+                    <td>
+                        <textarea name="content" cols="100" rows="5"><%=good.content%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        图片:
+                    </td>
+                    <td>
+                        <input type="file" name="pic1" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        推荐:
+                    </td>
+                    <td>
+                        <label> <input type="checkbox" value="1" name="flag" />推荐</label>
+                        <label> <input type="checkbox" value="2" name="flag" />活动</label>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="lab">
+
+                    </td>
+                    <td colspan="2">
+                        <p  class="red">
+                        <%=e%>！
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="lab">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<%=good._id%>"/>
+                        <input type="submit" value="submit" id="submit" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% include admin_menu.html%> 
+        <form method="post">
+            <%=act%>
+            <table class="tbForm" cellspacing="0">
+                <tr>
+                    <td class="lab">
+                        优惠活动:
+                    </td>
+                    <td>
+                        <input type="text" value="<%=act.title%>" name="title" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        简述:
+                    </td>
+                    <td>
+                        <textarea name="desc" cols="100" rows="3"><%=act.summary_desc%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        内容:
+                    </td>
+                    <td>
+                        <textarea name="content" cols="100" rows="5"><%=act.content%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        图片:
+                    </td>
+                    <td>
+                        <input type="file" name="pic1" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+
+                    </td>
+                    <td colspan="2">
+                        <p  class="red">
+                        <%=e%>！
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="lab">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<%=act._id%>"/>
+                        <input type="submit" value="submit" id="submit" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

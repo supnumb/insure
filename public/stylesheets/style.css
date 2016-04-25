@@ -1,0 +1,21 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+    color: #00b7ff;
+}
+
+
+.list_tb {
+    background-color:#ecc;
+}
+
+.list_tb td {
+    padding:2px 5px;
+    background-color:white;
+}
+
+.list_tb tr td:hover{
+background-color:#ecc;
+}

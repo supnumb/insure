@@ -1,0 +1,6 @@
+
+
+var member = require('./model');
+
+
+

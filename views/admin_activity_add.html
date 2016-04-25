@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1 class="page_title"><%= title %></h1>
+        <% include admin_menu.html%> 
+        <form method="post">
+            <table class="tbForm" cellspacing="0">
+                <tr>
+                    <td class="lab">
+                        优惠活动:
+                    </td>
+                    <td>
+                        <input type="text" name="title" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        简述:
+                    </td>
+                    <td>
+                        <textarea name="desc" cols="100" rows="3"></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        活动描述:
+                    </td>
+                    <td>
+                        <textarea name="content" cols="100" rows="5"></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        图片:
+                    </td>
+                    <td>
+                        <input type="file" name="pic1" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+
+                    </td>
+                    <td colspan="2">
+                        <p  class="red">
+                        这里放的是操作提醒消息！
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="lab">
+
+                    </td>
+                    <td>
+                        <input type="submit" value="submit" id="submit" />
+                    </td>
+
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1 class="page_title"><%= title %></h1>
+        <% include admin_menu.html%> 
+        <form method="post">
+            <%=Coupon%>
+            <table class="tbForm" cellspacing="0">
+                <tr>
+                    <td class="lab">
+                        优惠劵:
+                    </td>
+                    <td>
+                        <input value='<%= Coupon.title%>' type="text" name="title" />
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="lab">
+                        购买价格:
+                    </td>
+                    <td>
+                        <input value='<%= Coupon.price%>' type="text" name="price" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        简述:
+                    </td>
+                    <td>
+                        <textarea name="desc" cols="100" rows="3"><%= Coupon.desc%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        使用规则:
+                    </td>
+                    <td>
+                        <textarea name="content" cols="100" rows="5"><%= Coupon.content%></textarea>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        图片:
+                    </td>
+                    <td>
+                        <input type="file" name="pic1" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                        推荐:
+                    </td>
+                    <td>
+                        <label> 
+                            <%if(Coupon.flag==1){%>
+                            <input type="radio" value="1" checked name="flag" />
+                            <%}else{%>
+                            <input type="radio" value="1" name="flag" />
+                            <%}%>
+                            优惠劵
+                        </label>
+                        <label> 
+                            <%if(Coupon.flag==2){%>
+                            <input type="radio" value="2" checked name="flag" />
+                            <%}else{%>
+                            <input type="radio" value="2" name="flag" />
+                            <%}%>
+                            代金劵</label>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="lab">
+
+                    </td>
+                    <td colspan="2">
+                        <p  class="red">
+                        <%= err %>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lab">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id" value="<%=Coupon._id%>"/>
+                        <input type="submit" value="submit" id="submit" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

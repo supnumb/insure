@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <div class="common_bar"> 
+            AD
+        </div>
+
+        优惠活动
+        <%=act%>
+        <div class="common_bar"> 
+            <a href="./act/?aid=<%=act._id%>"><img src="<%=act.pic_url%>" alt="<%=act.title%>" /></a>
+        </div>
+
+        <h2>一级分销商</h2>
+        <div class="common_bar"> 
+            <% one_grade_users.forEach(function(g){%>
+            <div>
+                <h3> <%=g.title %>  <%=g.flag%></h3>
+                <p>
+                <%=g.desc%>
+                </p>
+            </div>
+            <%});%>
+        </div>
+
+        <h2>二级分销商</h2>
+        <div class="common_bar"> 
+            <% two_grade_users.forEach(function(g){%>
+            <h3><%=g.title %></h3>  
+            <p><%=g.desc%></p>  
+            <%});%>
+        </div>
+        <h2>三级分销商</h2>
+        <div class="common_bar"> 
+            <% three_grade_users.forEach(function(g){%>
+            <h3><%=g.title %></h3>  
+            <p><%=g.desc%></p>  
+            <%});%>
+        </div>
+    </body>
+</html>

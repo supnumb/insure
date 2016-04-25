@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% include admin_menu.html%> 
+        <p>Welcome to <%= title %></p>
+        <table class='list_tb' cellspacing='1' cellpadding='3'>
+            <tr>
+                <td> <img src=""/> </td>
+                <td> 活动名 </td>
+                <td> 简述 </td>
+                <td> 活动描述 </td>
+                <td> 创建时间 </td>
+                <td> 状态 </td>
+                <td> 操作 </td>
+            </tr>
+
+            <% Acts.forEach(function(g){%>
+            <tr>
+                <td>
+                    <img src="<%=g.pic_url%>"/>
+                </td>
+                <td>
+                    <%=g.title%>
+                </td>
+                <td>
+                    <%=g.summary_desc%>
+                </td>
+                <td>
+                    <%=g.content%>
+                </td>
+                <td>
+                    <%=date_format(g.create_time)%>
+                </td>
+                <td>
+                    <%=g.flag%>
+                </td>
+                <td>
+                    <a href="./activity/modify/?uid=<%=g._id%>">修改</a>
+                </td>
+            </tr>
+            <%});%>
+        </table>
+
+
+
+    </body>
+</html>

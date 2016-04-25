@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% include admin_menu.html%> 
+        <p>Welcome to <%= title %></p>
+        <table class='list_tb' cellspacing='1' cellpadding='3'>
+            <tr>
+                <td> <img src=""/> </td>
+                <td> 保险 </td>
+                <td> 简述 </td>
+                <td> 产品介绍 </td>
+                <td> 点击 </td>
+                <td> 创建时间 </td>
+                <td> 状态 </td>
+                <td> 操作 </td>
+            </tr>
+
+            <% Goods.forEach(function(g){%>
+            <tr>
+                <td>
+                    <img src="<%=g.pic_url%>"/>
+                </td>
+                <td>
+                    <%=g.title%>
+                </td>
+                <td>
+                    <%=g.desc%>
+                </td>
+                <td>
+                    <%=g.content%>
+                </td>
+                <td>
+                    <%=g.click_count%>
+                </td>
+                <td>
+                    <%=date_format(g.create_time)%>
+                </td>
+                <td>
+                    <%=g.flag%>
+                </td>
+                <td>
+                    <a href="./goods/modify/?uid=<%=g._id%>">修改</a>
+                </td>
+            </tr>
+            <%});%>
+        </table>
+    </body>
+</html>

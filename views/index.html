@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    </head>
+    <body>
+        <div class="common_bar"> 
+            <img src='ad.png' />
+        </div>
+
+        <h2>优惠活动</h2>
+        <hr />
+        <div class="common_bar"> 
+            <a href="./act/?aid=<%=act._id %>"><%=act.title %><img src="<%=act.pic_url%>" alt="<%=act.title%>" /></a>
+        </div>
+
+        <h2> 热销商品</h2>
+        <hr />
+        <div class="common_bar"> 
+            <% hot_goods.forEach(function(g){%>
+            <div>
+                <h3> <%=g.title %>  <%=g.flag%></h3>
+                <p>
+                <%=g.desc%>
+                </p>
+            </div>
+            <%});%>
+        </div>
+
+        <h2> 推荐套餐</h2> 
+        <hr />
+        <div class="common_bar"> 
+            <% comment_goods.forEach(function(g){%>
+            <h3><a href='./goods/?gs=<%=g._id%>'><%=g.title %></a></h3>  
+            <p><%=g.desc%></p>  
+            <%});%>
+        </div>
+
+        <a href='/signup'>注册</a>
+        <a href='/signin'>登录</a>
+
+    </body>
+</html>
