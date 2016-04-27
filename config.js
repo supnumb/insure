@@ -24,7 +24,7 @@ var config = {
     //winxin 配置
     app_id:'wx4ef2b2066c2e3244',
     app_secrect:'344a03107b0499a83b826efb37f79dc0',
-    token:'insure_#$%7!$5!',
+    token:'insure34P72wq'
 };
 
 module.exports = config;
