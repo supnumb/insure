@@ -8,30 +8,65 @@ var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
 var message = require('node-weixin-message').messages;
 var user = require('node-weixin-user');
+var MemberModel = require('model').Member;
 
 exports.onMess = function(req,res,next){
+
+    //用户发送的文本消息
     message.on.text(function(mess,res,callback,extra){
-        console.log(mess);
-        console.log("text")
+        res.send(mess);
+        console.log("text");
     });
 
-    message.subscribe(function(mess){
+    message.event.on.subscribe(function(mess){
         var app = {
             id:config.app_id,
         secret:config.app_secrect,
         token:config.token
         };
 
-        user.profile(settings, app, process.env.APP_OPENID, function (error, data) {
+        user.profile(settings, app, mess.FromUserName, function (error, data) {
+            console.log(data);
 
+            var m = new MemberModel({
+                name:data.nickname,
+                wx_openid:data.openid,
+                sex:data.sex,
+                nick_name:data.nickname,
+                city:data.city,
+                province:data.province,
+                country:data.country,
+                head_pic:data.headimgurl,
+                create_time:data.subscribe_time,
+                group_id:data.groupid,
+                desc:data.remark
+            });
+
+            m.save(err,function(doc){
+                console.log(doc);
+            });
 
         });
 
         console.log(mess);
     });
 
-    message.onXML(req.body,res,function callback(mess){
+    message.event.on.unsubscribe(function(mess){
         console.log(mess);
+    });
+
+    var data = "";
+
+    req.addListener("data",function(postData){
+        data += postData;
+    });
+
+    req.addListener("end",function(){
+        message.onXML(data,res,function callback(mess){
+            console.log(mess);
+        });
+
+        res.end("success");
     });
 };
 
@@ -57,7 +92,6 @@ exports.index = function(req,res,next){
             return;
         }
 
-        console.log(errors);
         switch(err){
             case 1:
                 res.send(errors.INPUT_INVALID);

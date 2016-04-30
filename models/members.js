@@ -14,10 +14,17 @@ var Schema = mongoose.Schema;
 var memberSchema = new Schema({
     name:String,
     sex:Number,   // 0 -- 未指定 1 男  2 女
+    nick_name:String,
+    city: String,
+    province:String ,
+    country: String,
     wx_openid:String,
     wx_unionid:String,
     grade:Number, //会员所属性的级别
     parent_id:Number,  //会员所属的上一级人员ID
+
+    head_pic:String,
+    group_id:Number,
     desc:String,
     account:Number,    //会员账号金额
     status:{type:Number,default:0},
