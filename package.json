@@ -27,6 +27,7 @@
     "stylus": "0.42.3",
     "utility": "1.7.0",
     "validator": "5.2.0",
+    "web-errors": "^0.1.5",
     "xmlreader": "0.2.3"
   }
 }

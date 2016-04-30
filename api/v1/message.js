@@ -1,9 +1,29 @@
+'use strict';
+
 var express = require('express');
 var config = require('../../config');
 var utility = require('utility');
 var auth = require('node-weixin-auth');
 var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
+var message = require('node-weixin-message').messages;
+
+
+exports.onMess = function(req,res,next){
+    message.on.text(function(mess,res,callback,extra){
+        console.log(mess);
+        console.log("text")
+    });
+
+    message.subscribe(function(mess){
+        console.log(mess);
+    });
+
+    message.onXML(req.body,res,function callback(mess){
+        console.log(mess);
+    });
+};
+
 
 //wx 消息接口
 exports.index = function(req,res,next){
@@ -27,6 +47,7 @@ exports.index = function(req,res,next){
             return;
         }
 
+        console.log(errors);
         switch(err){
             case 1:
                 res.send(errors.INPUT_INVALID);
@@ -35,7 +56,7 @@ exports.index = function(req,res,next){
                 res.send(errors.SIGNATURE_NOT_MATCH);
                 break;
             default:
-                res.send(errors.UNKNOWN_ERROR);
+                res.send('errors');
                 break;
         }
     });
@@ -48,19 +69,6 @@ exports.index = function(req,res,next){
     });
 
     var messages = nodeWeixinMessage.messages;
-    function text(message,res,callback,extra){
-        console.log(message);
-        console.log("text")
-    }
-
-    messages.on.text(text);
-    messages.onXML(req.body,res,function callback(message){
-        console.log("onXML")
-    });
-
-    messages.subscribe(function(message){
-        console.log(message);
-    });
        var signature = req.query.signature;
        var timestamp = req.query.timestamp;
        var nonce = req.query.nonce;
