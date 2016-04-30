@@ -8,7 +8,7 @@ var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
 var message = require('node-weixin-message').messages;
 var user = require('node-weixin-user');
-var MemberModel = require('model').Member;
+var MemberModel = require('../../models').Member;
 
 exports.onMess = function(req,res,next){
 
@@ -42,7 +42,7 @@ exports.onMess = function(req,res,next){
                 desc:data.remark
             });
 
-            m.save(err,function(doc){
+            m.save(function(err,doc){
                 console.log(doc);
             });
 
