@@ -8,7 +8,6 @@ var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
 var message = require('node-weixin-message').messages;
 
-
 exports.onMess = function(req,res,next){
     message.on.text(function(mess,res,callback,extra){
         console.log(mess);
@@ -23,7 +22,6 @@ exports.onMess = function(req,res,next){
         console.log(mess);
     });
 };
-
 
 //wx 消息接口
 exports.index = function(req,res,next){
@@ -64,11 +62,24 @@ exports.index = function(req,res,next){
 
     /*
 
-    auth.tokenize(settings,app,function(err,json){
-        var accessToken = json.access_token;
-    });
+       auth.tokenize(settings,app,function(err,json){
+       var accessToken = json.access_token;
+       });
 
-    var messages = nodeWeixinMessage.messages;
+       var messages = nodeWeixinMessage.messages;
+       function text(message,res,callback,extra){
+       console.log(message);
+       console.log("text")
+       }
+
+       messages.on.text(text);
+       messages.onXML(req.body,res,function callback(message){
+       console.log("onXML")
+       });
+
+       messages.subscribe(function(message){
+       console.log(message);
+       });
        var signature = req.query.signature;
        var timestamp = req.query.timestamp;
        var nonce = req.query.nonce;
