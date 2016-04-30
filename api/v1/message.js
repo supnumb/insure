@@ -8,18 +8,38 @@ var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
 var message = require('node-weixin-message').messages;
 
+
 exports.onMess = function(req,res,next){
+
+    //用户发送的文本消息
     message.on.text(function(mess,res,callback,extra){
-        console.log(mess);
+        res.send(mess);
         console.log("text")
     });
 
-    message.subscribe(function(mess){
+
+    message.event.on.subscribe(function(mess){
         console.log(mess);
     });
 
-    message.onXML(req.body,res,function callback(mess){
+    message.event.on.unsubscribe(function(mess){
+        console.log("unsubscribe");
         console.log(mess);
+    });
+
+    var data = "";
+    
+    req.addListener("data",function(postData){
+        console.log(data);
+        data += postData;
+    });
+
+    req.addListener("end",function(){
+        message.onXML(data,res,function callback(mess){
+            console.log(mess);
+        });
+
+        res.end("success");
     });
 };
 
