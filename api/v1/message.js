@@ -4,6 +4,30 @@ var utility = require('utility');
 var auth = require('node-weixin-auth');
 var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
+var messages = require('node-weixin-message');
+
+exports.onMess = function(req,res,next){
+    var messages = nodeWeixinMessage.messages;
+
+    /*
+    function text(message, res, callback, extra) {
+        //message => 解析后的JSON
+        //res => res
+        //callback => callback
+        //extra => 'some data',
+
+        console.log(message);
+    };
+*/
+    console.log(req.body);
+    console.log(req.body);
+
+    //messages.on.text(text);
+
+    //messages.onXML(req.body, res, function callback(message) {
+    //    console.log("mess handlered");
+    //});
+};
 
 //wx 消息接口
 exports.index = function(req,res,next){
@@ -43,24 +67,24 @@ exports.index = function(req,res,next){
 
     /*
 
-    auth.tokenize(settings,app,function(err,json){
-        var accessToken = json.access_token;
-    });
+       auth.tokenize(settings,app,function(err,json){
+       var accessToken = json.access_token;
+       });
 
-    var messages = nodeWeixinMessage.messages;
-    function text(message,res,callback,extra){
-        console.log(message);
-        console.log("text")
-    }
+       var messages = nodeWeixinMessage.messages;
+       function text(message,res,callback,extra){
+       console.log(message);
+       console.log("text")
+       }
 
-    messages.on.text(text);
-    messages.onXML(req.body,res,function callback(message){
-        console.log("onXML")
-    });
+       messages.on.text(text);
+       messages.onXML(req.body,res,function callback(message){
+       console.log("onXML")
+       });
 
-    messages.subscribe(function(message){
-        console.log(message);
-    });
+       messages.subscribe(function(message){
+       console.log(message);
+       });
        var signature = req.query.signature;
        var timestamp = req.query.timestamp;
        var nonce = req.query.nonce;

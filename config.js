@@ -22,8 +22,8 @@ var config = {
     act_pics_upload:'/uploads/pics/act_pics/',
 
     //winxin 配置
-    app_id:'wx4ef2b2066c2e3244',
-    app_secrect:'344a03107b0499a83b826efb37f79dc0',
+    app_id:'wxfdaca8ab1a3ce70f',
+    app_secrect:'661054be79e0f92a67b77cfb3a15b64c',
     token:'insure34P72wq'
 };
 
