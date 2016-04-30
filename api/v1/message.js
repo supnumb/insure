@@ -7,6 +7,7 @@ var auth = require('node-weixin-auth');
 var errors = require('web-errors').error;
 var settings = require('node-weixin-settings');
 var message = require('node-weixin-message').messages;
+var user = require('node-weixin-user');
 
 exports.onMess = function(req,res,next){
     message.on.text(function(mess,res,callback,extra){
@@ -15,6 +16,17 @@ exports.onMess = function(req,res,next){
     });
 
     message.subscribe(function(mess){
+        var app = {
+            id:config.app_id,
+        secret:config.app_secrect,
+        token:config.token
+        };
+
+        user.profile(settings, app, process.env.APP_OPENID, function (error, data) {
+
+
+        });
+
         console.log(mess);
     });
 
