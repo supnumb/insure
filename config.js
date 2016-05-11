@@ -9,6 +9,8 @@ var config = {
 
     domain:"http://127.0.0.1/",
 
+    //应用根目录
+    app_root:path.join(__dirname,'/public/'),
 
     //二维码存入路径
     qr_path:path.join(__dirname,"/public/qr/"),
@@ -24,7 +26,7 @@ var config = {
     //winxin 配置
     app_id:'wxfdaca8ab1a3ce70f',
     app_secrect:'661054be79e0f92a67b77cfb3a15b64c',
-    token:'insure34P72wq'
+    token:'insure34P72wq',
 };
 
 module.exports = config;

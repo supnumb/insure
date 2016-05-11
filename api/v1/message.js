@@ -45,7 +45,6 @@ exports.onMess = function(req,res,next){
             m.save(function(err,doc){
                 console.log(doc);
             });
-
         });
 
         console.log(mess);

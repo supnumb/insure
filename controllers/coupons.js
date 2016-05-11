@@ -1,9 +1,7 @@
 /*
  * 商城优惠卷信息,展示到页面用的
  * */
-
-var express = require('express');
-var router = express.Router();
+var mongoose = require('mongoose');
 var Coupon = require('../models').Coupon;
 var validator = require('validator');
 
@@ -58,7 +56,6 @@ exports.showModify = function(req,res,next){
 
     if(cid || ''==cid) {
         console.log(cid);
-
     }
 
     Coupon.findById(cid,function(err,doc){
@@ -76,9 +73,16 @@ exports.modify = function(req,res,next){
     var desc =req.body.desc;
     var content=req.body.content;
     var price=req.body.price;
+    var cid = req.body.id;
 
     if(!validator.isNumeric(price)) {
-        res.render('admin_coupon_modify',{title:"添加优惠劵",err:"优惠劵价格只能是数字"});
+        Coupon.findById(cid,function(err,doc){
+            if(err){
+                console.log(err);
+                return;
+            }
+            res.render('admin_coupon_modify',{title:"修改优惠劵",Coupon:doc,err:'优惠劵价格只能是数字'});
+        });
         return;
     }
 
@@ -90,7 +94,6 @@ exports.modify = function(req,res,next){
         flag:req.body.flag
     };
 
-    var cid = req.body.id;
 
     if(!cid && ''==cid) {
         console.log('no_id');

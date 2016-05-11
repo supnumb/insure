@@ -10,11 +10,6 @@ var fileUpload = require('express-fileupload');
 var webRoute = require('./web_route');
 var apiV1 = require('./api_router_v1');
 
-// 保险商品的管理
-var admin_index= require('./routes_admin/index');
-var admin_goods = require('./routes_admin/goods');
-var admin_activity = require('./routes_admin/activity');
-
 var app = express();
 
 // view engine setup
@@ -38,7 +33,7 @@ app.locals.cutMoreWords = function(str,length){
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-//app.use(fileUpload());
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -47,9 +42,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', webRoute);
 app.use('/v1', apiV1);
-app.use('/admin', admin_index);
-app.use('/admin/goods', admin_goods);
-app.use('/admin/activity', admin_activity);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

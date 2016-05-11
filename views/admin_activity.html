@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap core CSS -->
+        <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="/stylesheets/dashboard.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="/javascripts/ie-emulation-modes-warning.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
         <title><%= title %></title>
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
     <body>
-        <h1><%= title %></h1>
-        <% include admin_menu.html%> 
-        <p>Welcome to <%= title %></p>
-        <table class='list_tb' cellspacing='1' cellpadding='3'>
-            <tr>
-                <td> <img src=""/> </td>
-                <td> 活动名 </td>
-                <td> 简述 </td>
-                <td> 活动描述 </td>
-                <td> 创建时间 </td>
-                <td> 状态 </td>
-                <td> 操作 </td>
-            </tr>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <% include admin_header.html%>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <% include admin_menu.html%> 
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <% include admin_dashboard.html%>
+                    <h2 class="sub-header"><%= title %></h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <td> 图片 </td>
+                                <td> 活动名 </td>
+                                <td> 简述 </td>
+                                <td> 活动描述 </td>
+                                <td> 创建时间 </td>
+                                <td> 状态 </td>
+                                <td> 操作 </td>
+                            </tr>
 
-            <% Acts.forEach(function(g){%>
-            <tr>
-                <td>
-                    <img src="<%=g.pic_url%>"/>
-                </td>
-                <td>
-                    <%=g.title%>
-                </td>
-                <td>
-                    <%=g.summary_desc%>
-                </td>
-                <td>
-                    <%=g.content%>
-                </td>
-                <td>
-                    <%=date_format(g.create_time)%>
-                </td>
-                <td>
-                    <%=g.flag%>
-                </td>
-                <td>
-                    <a href="./activity/modify/?uid=<%=g._id%>">修改</a>
-                </td>
-            </tr>
-            <%});%>
-        </table>
+                            <% Acts.forEach(function(g){%>
+                            <tr>
+                                <td>
+                                    <img style="width:50px" src="<%=g.pic_url%>"/>
+                                </td>
+                                <td>
+                                    <%=g.title%>
+                                </td>
+                                <td>
+                                    <%=g.summary_desc%>
+                                </td>
+                                <td>
+                                    <%=g.content%>
+                                </td>
+                                <td>
+                                    <%=date_format(g.create_time)%>
+                                </td>
+                                <td>
+                                    <%=g.flag%>
+                                </td>
+                                <td>
+                                    <a href="/admin/activity/modify/?uid=<%=g._id%>">修改</a>
+                                </td>
+                            </tr>
+                            <%});%>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="/javascripts/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="/javascripts/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>

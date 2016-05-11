@@ -6,11 +6,6 @@
  *
  * */
 
-var express = require('express');
-var router = express.Router();
-
-router.get('/',function(req,res,next){
+exports.index=function(req,res,next){
     res.render('admin_index',{title:"保险管理"});
-});
-
-module.exports = router;
+};

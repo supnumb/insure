@@ -1,92 +1,108 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap core CSS -->
+        <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="/stylesheets/dashboard.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="/javascripts/ie-emulation-modes-warning.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
         <title><%= title %></title>
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
     <body>
-        <h1 class="page_title"><%= title %></h1>
-        <% include admin_menu.html%> 
-        <form method="post">
-            <table class="tbForm" cellspacing="0">
-                <tr>
-                    <td class="lab">
-                        优惠劵:
-                    </td>
-                    <td>
-                        <input type="text" name="title" />
-                    </td>
-                    <td></td>
-                </tr>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <% include admin_header.html%>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <% include admin_menu.html%> 
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h2 class="sub-header"><%= title %></h2>
+                    <div class="table-responsive">
+                        <form method="post" enctype='multipart/form-data' >
+                            <div class="form-group">
+                                <label >
+                                    优惠劵:
+                                </label>
+                                <input type="text" class="form-control"  name="title" />
+                            </div>
 
-                <tr>
-                    <td class="lab">
-                        购买价格:
-                    </td>
-                    <td>
-                        <input type="text" name="price" />
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="lab">
-                        简述:
-                    </td>
-                    <td>
-                        <textarea name="desc" cols="100" rows="3"></textarea>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="lab">
-                        使用规则:
-                    </td>
-                    <td>
-                        <textarea name="content" cols="100" rows="5"></textarea>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="lab">
-                        图片:
-                    </td>
-                    <td>
-                        <input type="file" name="pic1" />
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="lab">
-                        推荐:
-                    </td>
-                    <td>
-                        <label> <input type="checkbox" value="1" name="flag" />推荐</label>
-                        <label> <input type="checkbox" value="2" name="flag" />活动</label>
-                    </td>
-                    <td></td>
-                </tr>
+                            <div class="form-group">
+                                <label >
+                                    购买价格:
+                                </label>
+                                <input type="text" class="form-control"  name="price" />
+                            </div>
 
-                <tr>
-                    <td class="lab">
+                            <div class="form-group">
+                                <label >
+                                    简述:
+                                </label>
+                                <textarea type="text" class="form-control" cols="100" rows="3" name="desc"> </textarea>
+                            </div>
 
-                    </td>
-                    <td colspan="2">
-                        <p  class="red">
-                        <%= err %>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="lab">
+                            <div class="form-group">
+                                <label >
+                                    使用规则:
+                                </label>
+                                <textarea type="text" class="form-control" cols="100" rows="3" name="content"> </textarea>
+                            </div>
 
-                    </td>
-                    <td>
-                        <input type="submit" value="submit" id="submit" />
-                    </td>
+                            <div class="form-group">
+                                <label >
+                                    图片:
+                                </label>
+                                <input type="file"  name="pic" />
+                                <p class="help-block">
+                                请选择优惠卷的展示图片。
+                                </p>
+                            </div>
+                            <div class="checkbox">
+                                <label> <input type="checkbox" value="1" name="flag" />优惠劵</label>
+                                <label> <input type="checkbox" value="2" name="flag" />代金劵</label>
+                            </div> 
+                            <div class="form-group">
+                                <p class="help-block">
+                                <%=err%>
+                                </p>
+                            </div> 
+                            <button type="submit" class="btn btn-default">
+                                提交
+                            </button>
 
-                    <td></td>
-                </tr>
-            </table>
-        </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="/javascripts/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="/javascripts/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>

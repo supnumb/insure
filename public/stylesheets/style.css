@@ -1,7 +1,30 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
-  color: #00b7ff;
+    color: #00b7ff;
+}
+
+.lab{
+width:60px;
+color:gray;
+text-align:right;
+
+}
+
+
+.list_tb {
+    background-color: coral; 
+}
+
+.list_tb th{
+    font-weight: bold;
+    padding:5px;
+    background-color: white;
+}
+
+.list_tb td {
+    padding:5px;
+    background-color: white;
 }
